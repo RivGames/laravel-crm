@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\ForbiddenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::any('{all}', ForbiddenController::class)->where('all','^(?!api).*$');
