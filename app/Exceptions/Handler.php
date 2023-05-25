@@ -2,7 +2,10 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Str;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -23,8 +26,20 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->reportable(function (ModelNotFoundException $exception) {
+
         });
+    }
+    public function render($request, Throwable $e)
+    {
+        $entity = class_basename($e->getModel());
+
+        if ($e instanceof ModelNotFoundException) {
+            return new JsonResponse([
+                'message' => "Unable to locate the $entity you requested."
+            ], 404);
+        }
+
+        return parent::render($request, $e);
     }
 }
