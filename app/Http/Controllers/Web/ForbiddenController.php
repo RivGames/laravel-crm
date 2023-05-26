@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Http\Request;
 
 class ForbiddenController extends Controller
 {
@@ -12,8 +11,8 @@ class ForbiddenController extends Controller
     {
         throw new HttpResponseException(
             response()->json([
-                'message' => 'Forbidden'
-            ],403)
+                'message' => 'Forbidden',
+            ], 403)
         );
     }
 }

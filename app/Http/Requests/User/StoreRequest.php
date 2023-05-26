@@ -26,7 +26,7 @@ class StoreRequest extends FormRequest
             'name' => ['required', 'min:5', 'max:25'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:8', 'max:64', 'confirmed'],
-            'role_id' => ['required', 'integer', Rule::in([1, 2, 3])]
+            'role_id' => ['required', 'integer', Rule::in([1, 2, 3])],
         ];
     }
 }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('client_id')->constrained();
             $table->date('deadline');
-            $table->enum('status',[Status::OPEN->name,Status::IN_PROGRESS->name,Status::CLOSED->name]);
+            $table->enum('status', [Status::OPEN->name, Status::IN_PROGRESS->name, Status::CLOSED->name]);
             $table->timestamps();
         });
     }

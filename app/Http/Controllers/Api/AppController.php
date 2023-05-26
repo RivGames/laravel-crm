@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class AppController extends Controller
 {
@@ -11,7 +10,7 @@ class AppController extends Controller
     {
         return response()->json([
             'message' => 'Everything is going to be OK',
-            'status' => 'OK'
+            'status' => 'OK',
         ]);
     }
 }

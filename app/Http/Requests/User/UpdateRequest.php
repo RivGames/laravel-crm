@@ -24,8 +24,8 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'min:5', 'max:25'],
-            'email' => ['required', 'email', 'unique:users,id'],// Check the documentation
-            'role_id' => ['required', 'integer', Rule::in([1, 2, 3])]
+            'email' => ['required', 'email', 'unique:users,id'], // Check the documentation
+            'role_id' => ['required', 'integer', Rule::in([1, 2, 3])],
         ];
     }
 }
