@@ -6,7 +6,7 @@ use Tests\TestCase;
 
 class AppTest extends TestCase
 {
-    public function test_app_status_route_returns_success(): void
+    public function testAppStatusRouteReturnsSuccess(): void
     {
         $response = $this->get('/api/status');
 
@@ -18,7 +18,7 @@ class AppTest extends TestCase
         ]);
     }
 
-    public function test_any_web_route_returns_forbidden(): void
+    public function testAnyWebRouteReturnsForbidden(): void
     {
         $response = $this->get('/');
         $response1 = $this->post('/test1');
