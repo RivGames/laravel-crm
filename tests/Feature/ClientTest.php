@@ -136,6 +136,24 @@ class ClientTest extends TestCase
         $this->assertDatabaseMissing('clients',$userData);
     }
 
+    public function testUpdateMethodFailsWithUnUniqueEmail()
+    {
+        $userData = [
+            'contact_name' => fake()->word(),
+            'contact_email' => 'test@gmail.com',
+            'contact_phone_number' => Str::random(15),
+            'company_name' => fake()->word(),
+            'company_address' => fake()->address(),
+            'company_city' => fake()->city(),
+            'company_zip' => rand(1, 100_000),
+            'company_vat' => rand(1, 10_000)
+        ];
+        Client::create($userData);
+
+        $response = $this->putJson(route('clients.update',10),$userData);
+
+        $response->assertNotFound();
+    }
     public function testDestroyMethodDeleteExistingRecord()
     {
         $this->deleteJson(route('clients.destroy',1));
