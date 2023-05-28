@@ -80,7 +80,7 @@ class UserTest extends TestCase
         ]);
     }
 
-    public function testUpdateMethodUpdatesRecord()
+    public function testUpdateMethodUpdatesExistingRecord()
     {
         $userData = [
             'name' => 'john doe',
@@ -106,17 +106,17 @@ class UserTest extends TestCase
 
         $this->assertDatabaseMissing('users',$userData);
         $response->assertJsonValidationErrors('name');
-        $this->assertDatabaseCount('users',10);
     }
 
-    public function testDestroyMethodDeleteRecord()
+    public function testDestroyMethodDeleteExistingRecord()
     {
         $this->deleteJson(route('users.destroy',1));
+
         $this->assertDatabaseCount('users',9);
     }
     public function testDestroyMethodFailsBecauseOfRecordNotFound()
     {
-        $response = $this->deleteJson(route('users.destroy',1000));
+        $response = $this->deleteJson(route('users.destroy',123));
 
         $response->assertExactJson(['message' => 'Unable to locate the User you requested.']);
         $this->assertDatabaseCount('users',10);

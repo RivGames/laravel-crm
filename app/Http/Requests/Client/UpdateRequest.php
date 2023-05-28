@@ -24,7 +24,7 @@ class UpdateRequest extends FormRequest
         return [
             'contact_name' => ['required','max:20'],
             'contact_email' => ['required','unique:clients,id','email'],
-            'contact_phone_number' => ['required','15'],
+            'contact_phone_number' => ['required','max:15'],
             'company_name' => ['required','max:25'],
             'company_address' => ['required','max:100'],
             'company_city' => ['required','max:25'],
