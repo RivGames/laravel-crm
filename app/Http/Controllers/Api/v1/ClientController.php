@@ -30,7 +30,7 @@ class ClientController extends Controller
      * @param ClientService $clientService
      * @return JsonResponse
      */
-    public function store(StoreRequest $request,ClientService $clientService): JsonResponse
+    public function store(StoreRequest $request, ClientService $clientService): JsonResponse
     {
         $clientService->createClient($request->validated());
 
@@ -57,9 +57,9 @@ class ClientController extends Controller
      * @param ClientService $clientService
      * @return JsonResponse
      */
-    public function update(UpdateRequest $request, Client $client,ClientService $clientService): JsonResponse
+    public function update(UpdateRequest $request, Client $client, ClientService $clientService): JsonResponse
     {
-        $clientService->updateClient($client,$request->validated());
+        $clientService->updateClient($client, $request->validated());
 
         return response()->json([
             'message' => 'Client successfully updated!',
@@ -76,6 +76,6 @@ class ClientController extends Controller
     {
         $clientService->deleteClient($client);
 
-        return response()->json([],204);
+        return response()->json([], 204);
     }
 }
