@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Client;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateRequest extends FormRequest
 {
@@ -23,7 +24,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'contact_name' => ['required','max:20'],
-            'contact_email' => ['required','unique:clients,id','email'],
+            'contact_email' => ['required','email','unique:clients,id'],
             'contact_phone_number' => ['required','max:15'],
             'company_name' => ['required','max:25'],
             'company_address' => ['required','max:100'],
