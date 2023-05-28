@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
 use Throwable;
@@ -38,7 +39,17 @@ class Handler extends ExceptionHandler
                 'message' => "Unable to locate the $entity you requested.",
             ], 404);
         }
-
+        if ($e instanceof QueryException) {
+            if(str_contains($e->getMessage(),'email_unique')){
+                return new JsonResponse([
+                    'message' => 'The email field must be unique.',
+                    'errors' => ['name' => ['The email field must be unique.']]
+                ],422);
+            }
+            return new JsonResponse([
+                'message' => 'Something went wrong...',
+            ], 404);
+        }
         return parent::render($request, $e);
     }
 }
