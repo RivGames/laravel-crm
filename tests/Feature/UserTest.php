@@ -30,7 +30,7 @@ class UserTest extends TestCase
         ]);
     }
 
-    public function testStoreMethodCreatedNewRecord()
+    public function testStoreMethodCreatesNewRecord()
     {
         $userData = [
             'name' => 'JohnDoe',
