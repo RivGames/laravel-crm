@@ -8,19 +8,11 @@ use App\Models\Client;
 
 class ClientService
 {
-
-    /**
-     * @return ClientCollection
-     */
     public function getClientCollection(): ClientCollection
     {
         return new ClientCollection(Client::all());
     }
 
-    /**
-     * @param Client $client
-     * @return ClientResource
-     */
     public function getClientResource(Client $client): ClientResource
     {
         return new ClientResource($client);

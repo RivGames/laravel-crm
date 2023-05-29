@@ -24,9 +24,9 @@ class UpdateRequest extends FormRequest
         return [
             'title' => ['required', 'min:5', 'max:25'],
             'description' => ['required', 'min:25', 'max:125'],
-            'user_id' => ['required','integer'],
-            'client_id' => ['required','integer'],
-            'project_id' => ['required','integer'],
+            'user_id' => ['required', 'integer'],
+            'client_id' => ['required', 'integer'],
+            'project_id' => ['required', 'integer'],
             'deadline' => ['required', 'date'],
             'status' => ['required'],
         ];

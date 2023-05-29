@@ -35,21 +35,24 @@ class Handler extends ExceptionHandler
     {
         if ($e instanceof ModelNotFoundException) {
             $entity = class_basename($e->getModel());
+
             return new JsonResponse([
                 'message' => "Unable to locate the $entity you requested.",
             ], 404);
         }
         if ($e instanceof QueryException) {
-            if(str_contains($e->getMessage(),'email_unique')){
+            if (str_contains($e->getMessage(), 'email_unique')) {
                 return new JsonResponse([
                     'message' => 'The email field must be unique.',
-                    'errors' => ['name' => ['The email field must be unique.']]
-                ],422);
+                    'errors' => ['name' => ['The email field must be unique.']],
+                ], 422);
             }
+
             return new JsonResponse([
                 'message' => 'Something went wrong...',
             ], 404);
         }
+
         return parent::render($request, $e);
     }
 }

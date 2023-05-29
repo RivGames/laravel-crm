@@ -18,15 +18,16 @@ class TaskFactory extends Factory
      */
     public function definition(): array
     {
-        $statuses = [Status::OPEN,Status::IN_PROGRESS,Status::CLOSED];
+        $statuses = [Status::OPEN, Status::IN_PROGRESS, Status::CLOSED];
+
         return [
-            'title' => Str::random(rand(5,25)),
-            'description' => Str::random(rand(25,125)),
-            'user_id' => rand(1,10),
-            'client_id' => rand(1,10),
-            'project_id' => rand(1,10),
+            'title' => Str::random(rand(5, 25)),
+            'description' => Str::random(rand(25, 125)),
+            'user_id' => rand(1, 10),
+            'client_id' => rand(1, 10),
+            'project_id' => rand(1, 10),
             'deadline' => fake()->date(),
-            'status' => ($statuses[array_rand($statuses)])->name
+            'status' => ($statuses[array_rand($statuses)])->name,
         ];
     }
 }

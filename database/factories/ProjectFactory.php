@@ -18,6 +18,7 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         $statuses = [Status::OPEN, Status::IN_PROGRESS, Status::CLOSED];
+
         return [
             'title' => fake()->word(),
             'description' => fake()->words(10, true),

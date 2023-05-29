@@ -23,8 +23,8 @@ class ClientFactory extends Factory
             'company_name' => fake()->word(),
             'company_address' => fake()->address(),
             'company_city' => fake()->city(),
-            'company_zip' => rand(1,100_000),
-            'company_vat' => rand(1,10_000),
+            'company_zip' => rand(1, 100_000),
+            'company_vat' => rand(1, 10_000),
         ];
     }
 }

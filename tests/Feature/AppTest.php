@@ -14,7 +14,7 @@ class AppTest extends TestCase
         $response->assertJsonStructure(['status', 'message']);
         $response->assertExactJson([
             'message' => 'Everything is going to be OK',
-            'status' => 'OK'
+            'status' => 'OK',
         ]);
     }
 

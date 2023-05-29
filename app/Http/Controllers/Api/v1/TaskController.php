@@ -15,8 +15,6 @@ class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * @param TaskService $taskService
-     * @return TaskCollection
      */
     public function index(TaskService $taskService): TaskCollection
     {
@@ -25,24 +23,18 @@ class TaskController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param StoreRequest $request
-     * @param TaskService $taskService
-     * @return JsonResponse
      */
-    public function store(StoreRequest $request,TaskService $taskService): JsonResponse
+    public function store(StoreRequest $request, TaskService $taskService): JsonResponse
     {
         $taskService->createTask($request->validated());
 
         return response()->json([
-            'message' => 'Task successfully created!'
-        ],201);
+            'message' => 'Task successfully created!',
+        ], 201);
     }
 
     /**
      * Display the specified resource.
-     * @param Task $task
-     * @param TaskService $taskService
-     * @return TaskResource
      */
     public function show(Task $task, TaskService $taskService): TaskResource
     {
@@ -51,30 +43,23 @@ class TaskController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * @param UpdateRequest $request
-     * @param Task $task
-     * @param TaskService $taskService
-     * @return JsonResponse
      */
     public function update(UpdateRequest $request, Task $task, TaskService $taskService): JsonResponse
     {
-        $taskService->updateTask($request->validated(),$task);
+        $taskService->updateTask($request->validated(), $task);
 
         return response()->json([
-            'message' => 'Task successfully updated!'
+            'message' => 'Task successfully updated!',
         ]);
     }
 
     /**
      * Remove the specified resource from storage.
-     * @param Task $task
-     * @param TaskService $taskService
-     * @return JsonResponse
      */
     public function destroy(Task $task, TaskService $taskService): JsonResponse
     {
         $taskService->deleteTask($task);
 
-        return response()->json([],204);
+        return response()->json([], 204);
     }
 }

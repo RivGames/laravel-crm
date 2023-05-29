@@ -7,7 +7,6 @@ use App\Models\Client;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
@@ -35,8 +34,8 @@ class ProjectTest extends TestCase
                 'user_id',
                 'client_id',
                 'deadline',
-                'status'
-            ]
+                'status',
+            ],
         ]);
     }
 
@@ -52,17 +51,17 @@ class ProjectTest extends TestCase
             'status' => ($statuses[array_rand($statuses)])->name,
         ];
 
-        $response = $this->postJson(route('projects.store'),$userData);
+        $response = $this->postJson(route('projects.store'), $userData);
 
         $response->assertCreated();
         $response->assertExactJson(['message' => 'Project successfully created!']);
-        $this->assertDatabaseHas('projects',$userData);
+        $this->assertDatabaseHas('projects', $userData);
     }
 
     public function testStoreMethodFailsWithInCorrectData()
     {
         $userData = [
-            'title' => fake()->word() . Str::random(25),
+            'title' => fake()->word().Str::random(25),
             'description' => '',
             'user_id' => rand(1, 1000),
             'client_id' => 0,
@@ -70,11 +69,11 @@ class ProjectTest extends TestCase
             'status' => '',
         ];
 
-        $response = $this->postJson(route('projects.store'),$userData);
+        $response = $this->postJson(route('projects.store'), $userData);
 
         $response->assertUnprocessable();
-        $response->assertJsonValidationErrors(['title','description','status']);
-        $this->assertDatabaseMissing('projects',$userData);
+        $response->assertJsonValidationErrors(['title', 'description', 'status']);
+        $this->assertDatabaseMissing('projects', $userData);
     }
 
     public function testStoreMethodFailsWithInCorrectUserIdAndClientId()
@@ -89,15 +88,15 @@ class ProjectTest extends TestCase
             'status' => $statuses[array_rand($statuses)],
         ];
 
-        $response = $this->postJson(route('projects.store'),$userData);
+        $response = $this->postJson(route('projects.store'), $userData);
 
         $response->assertJson(['message' => 'Something went wrong...']);
-        $this->assertDatabaseMissing('projects',$userData);
+        $this->assertDatabaseMissing('projects', $userData);
     }
 
     public function testShowMethodReturnProjectResource()
     {
-        $response = $this->getJson(route('projects.show',1));
+        $response = $this->getJson(route('projects.show', 1));
 
         $response->assertOk();
         $response->assertJsonStructure([
@@ -122,17 +121,17 @@ class ProjectTest extends TestCase
             'status' => ($statuses[array_rand($statuses)])->name,
         ];
 
-        $response = $this->putJson(route('projects.update',1),$userData);
+        $response = $this->putJson(route('projects.update', 1), $userData);
 
         $response->assertOk();
         $response->assertExactJson(['message' => 'Project successfully updated!']);
-        $this->assertDatabaseHas('projects',$userData);
+        $this->assertDatabaseHas('projects', $userData);
     }
 
     public function testUpdatesMethodFailsWithInCorrectData()
     {
         $userData = [
-            'title' => fake()->word() . Str::random(25),
+            'title' => fake()->word().Str::random(25),
             'description' => '',
             'user_id' => rand(1, 1000),
             'client_id' => 0,
@@ -140,7 +139,7 @@ class ProjectTest extends TestCase
             'status' => '',
         ];
 
-        $response = $this->putJson(route('projects.update',1),$userData);
+        $response = $this->putJson(route('projects.update', 1), $userData);
 
         $response->assertUnprocessable();
         $this->assertDatabaseMissing('projects', $userData);
@@ -148,17 +147,17 @@ class ProjectTest extends TestCase
 
     public function testDestroyMethodDeletesExistingRecord()
     {
-        $response = $this->deleteJson(route('projects.destroy',1));
+        $response = $this->deleteJson(route('projects.destroy', 1));
 
         $response->assertNoContent();
-        $this->assertDatabaseCount('projects',9);
+        $this->assertDatabaseCount('projects', 9);
     }
 
     public function testDestroyMethodFailsBecauseOfRecordNotFound()
     {
-        $response = $this->deleteJson(route('projects.destroy',100));
+        $response = $this->deleteJson(route('projects.destroy', 100));
 
         $response->assertNotFound();
-        $this->assertDatabaseCount('projects',10);
+        $this->assertDatabaseCount('projects', 10);
     }
 }

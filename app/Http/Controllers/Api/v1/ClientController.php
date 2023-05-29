@@ -16,8 +16,6 @@ class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * @param ClientService $clientService
-     * @return ClientCollection
      */
     public function index(ClientService $clientService): ClientCollection
     {
@@ -26,9 +24,6 @@ class ClientController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param StoreRequest $request
-     * @param ClientService $clientService
-     * @return JsonResponse
      */
     public function store(StoreRequest $request, ClientService $clientService): JsonResponse
     {
@@ -41,9 +36,6 @@ class ClientController extends Controller
 
     /**
      * Display the specified resource.
-     * @param Client $client
-     * @param ClientService $clientService
-     * @return ClientResource
      */
     public function show(Client $client, ClientService $clientService): ClientResource
     {
@@ -52,10 +44,6 @@ class ClientController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * @param UpdateRequest $request
-     * @param Client $client
-     * @param ClientService $clientService
-     * @return JsonResponse
      */
     public function update(UpdateRequest $request, Client $client, ClientService $clientService): JsonResponse
     {
@@ -68,9 +56,6 @@ class ClientController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * @param Client $client
-     * @param ClientService $clientService
-     * @return JsonResponse
      */
     public function destroy(Client $client, ClientService $clientService): JsonResponse
     {

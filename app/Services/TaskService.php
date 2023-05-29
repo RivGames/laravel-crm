@@ -8,18 +8,11 @@ use App\Models\Task;
 
 class TaskService
 {
-    /**
-     * @return TaskCollection
-     */
     public function getTaskCollection(): TaskCollection
     {
         return new TaskCollection(Task::all());
     }
 
-    /**
-     * @param Task $task
-     * @return TaskResource
-     */
     public function getTaskResource(Task $task): TaskResource
     {
         return new TaskResource($task);

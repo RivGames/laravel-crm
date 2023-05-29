@@ -16,8 +16,6 @@ class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * @param UserService $userService
-     * @return UserCollection
      */
     public function index(UserService $userService): UserCollection
     {
@@ -26,9 +24,6 @@ class UserController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param StoreRequest $request
-     * @param UserService $userService
-     * @return JsonResponse
      */
     public function store(StoreRequest $request, UserService $userService): JsonResponse
     {
@@ -41,9 +36,6 @@ class UserController extends Controller
 
     /**
      * Display the specified resource.
-     * @param User $user
-     * @param UserService $userService
-     * @return UserResource
      */
     public function show(User $user, UserService $userService): UserResource
     {
@@ -52,10 +44,6 @@ class UserController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * @param UpdateRequest $request
-     * @param User $user
-     * @param UserService $userService
-     * @return JsonResponse
      */
     public function update(UpdateRequest $request, User $user, UserService $userService): JsonResponse
     {
@@ -68,9 +56,6 @@ class UserController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * @param User $user
-     * @param UserService $userService
-     * @return JsonResponse
      */
     public function destroy(User $user, UserService $userService): JsonResponse
     {

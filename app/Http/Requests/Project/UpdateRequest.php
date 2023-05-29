@@ -22,11 +22,11 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required','min:5','max:25'],
-            'description' => ['required','min:10','max:50'],
-            'user_id' => ['required','integer'],
-            'client_id' => ['required','integer'],
-            'deadline' => ['required','date'],
+            'title' => ['required', 'min:5', 'max:25'],
+            'description' => ['required', 'min:10', 'max:50'],
+            'user_id' => ['required', 'integer'],
+            'client_id' => ['required', 'integer'],
+            'deadline' => ['required', 'date'],
             'status' => ['required'],
         ];
     }

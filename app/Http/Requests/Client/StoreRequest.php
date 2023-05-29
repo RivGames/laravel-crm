@@ -22,14 +22,14 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'contact_name' => ['required','max:20'],
-            'contact_email' => ['required','unique:clients','email'],
-            'contact_phone_number' => ['required','max:15'],
-            'company_name' => ['required','max:25'],
-            'company_address' => ['required','max:100'],
-            'company_city' => ['required','max:25'],
-            'company_zip' => ['required','integer'],
-            'company_vat' => ['required','integer'],
+            'contact_name' => ['required', 'max:20'],
+            'contact_email' => ['required', 'unique:clients', 'email'],
+            'contact_phone_number' => ['required', 'max:15'],
+            'company_name' => ['required', 'max:25'],
+            'company_address' => ['required', 'max:100'],
+            'company_city' => ['required', 'max:25'],
+            'company_zip' => ['required', 'integer'],
+            'company_vat' => ['required', 'integer'],
         ];
     }
 }

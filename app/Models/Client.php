@@ -24,7 +24,7 @@ class Client extends Model
     protected function address(): Attribute
     {
         return Attribute::make(
-            get: fn() => sprintf('%s %s %s %s %s',
+            get: fn () => sprintf('%s %s %s %s %s',
                 $this->company_zip,
                 $this->company_city,
                 $this->contact_email,
@@ -33,10 +33,11 @@ class Client extends Model
             )
         );
     }
+
     protected function companyName(): Attribute
     {
         return Attribute::make(
-            get: fn(string $value) => ucfirst($value)
+            get: fn (string $value) => ucfirst($value)
         );
     }
 }

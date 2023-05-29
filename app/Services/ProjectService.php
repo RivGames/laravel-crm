@@ -8,9 +8,6 @@ use App\Models\Project;
 
 class ProjectService
 {
-    /**
-     * @return ProjectCollection
-     */
     public function getProjectCollection(): ProjectCollection
     {
         return new ProjectCollection(Project::all());

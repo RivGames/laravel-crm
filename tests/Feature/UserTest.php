@@ -25,8 +25,8 @@ class UserTest extends TestCase
             [
                 'id',
                 'name',
-                'email'
-            ]
+                'email',
+            ],
         ]);
     }
 
@@ -37,7 +37,7 @@ class UserTest extends TestCase
             'email' => 'johndoe@gmail.com',
             'password' => 'password',
             'password_confirmation' => 'password',
-            'role_id' => 1
+            'role_id' => 1,
         ];
 
         $response = $this->postJson(route('users.store'), $userData);
@@ -55,10 +55,9 @@ class UserTest extends TestCase
             'email' => 'johndoe@gmail.com',
             'password' => 'passwor',
             'password_confirmation' => 'password',
-            'role_id' => 1
+            'role_id' => 1,
         ];
         User::create($userData);
-
 
         $response = $this->postJson(route('users.store'), $userData);
 
@@ -70,7 +69,7 @@ class UserTest extends TestCase
 
     public function testShowMethodReturnsUserResource()
     {
-        $response = $this->getJson(route('users.show',10));
+        $response = $this->getJson(route('users.show', 10));
 
         $response->assertOk();
         $response->assertJsonStructure([
@@ -85,13 +84,13 @@ class UserTest extends TestCase
         $userData = [
             'name' => 'john doe',
             'email' => 'johndoe@gmail.com',
-            'role_id' => 1
+            'role_id' => 1,
         ];
 
-        $this->putJson(route('users.update',1),$userData);
+        $this->putJson(route('users.update', 1), $userData);
 
-        $this->assertDatabaseHas('users',$userData);
-        $this->assertDatabaseCount('users',10);
+        $this->assertDatabaseHas('users', $userData);
+        $this->assertDatabaseCount('users', 10);
     }
 
     public function testUpdateMethodFailsWithEmptyName()
@@ -99,26 +98,27 @@ class UserTest extends TestCase
         $userData = [
             'name' => '',
             'email' => 'johndoe@gmail.com',
-            'role_id' => 1
+            'role_id' => 1,
         ];
 
-        $response = $this->putJson(route('users.update',1),$userData);
+        $response = $this->putJson(route('users.update', 1), $userData);
 
-        $this->assertDatabaseMissing('users',$userData);
+        $this->assertDatabaseMissing('users', $userData);
         $response->assertJsonValidationErrors('name');
     }
 
     public function testDestroyMethodDeleteExistingRecord()
     {
-        $this->deleteJson(route('users.destroy',1));
+        $this->deleteJson(route('users.destroy', 1));
 
-        $this->assertDatabaseCount('users',9);
+        $this->assertDatabaseCount('users', 9);
     }
+
     public function testDestroyMethodFailsBecauseOfRecordNotFound()
     {
-        $response = $this->deleteJson(route('users.destroy',123));
+        $response = $this->deleteJson(route('users.destroy', 123));
 
         $response->assertExactJson(['message' => 'Unable to locate the User you requested.']);
-        $this->assertDatabaseCount('users',10);
+        $this->assertDatabaseCount('users', 10);
     }
 }
