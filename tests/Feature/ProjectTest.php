@@ -20,6 +20,8 @@ class ProjectTest extends TestCase
         User::factory(10)->create();
         Client::factory(10)->create();
         Project::factory(10)->create();
+        $user = User::factory()->make();
+        $this->actingAs($user);
     }
 
     public function testIndexMethodReturnsProjectCollection()

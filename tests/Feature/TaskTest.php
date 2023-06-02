@@ -22,6 +22,8 @@ class TaskTest extends TestCase
         Client::factory(10)->create();
         Project::factory(10)->create();
         Task::factory(10)->create();
+        $user = User::factory()->make();
+        $this->actingAs($user);
     }
 
     public function testIndexMethodReturnsTaskCollection()
