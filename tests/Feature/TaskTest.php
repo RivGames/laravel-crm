@@ -77,13 +77,13 @@ class TaskTest extends TestCase
         $response = $this->postJson(route('tasks.store'), $userData);
 
         $response->assertUnprocessable();
-        $response->assertJsonValidationErrors(['title','description','deadline','status']);
+        $response->assertJsonValidationErrors(['title', 'description', 'deadline', 'status']);
         $this->assertDatabaseMissing('tasks', $userData);
     }
 
     public function testShowMethodReturnsTaskResource()
     {
-        $response = $this->getJson(route('tasks.show',1));
+        $response = $this->getJson(route('tasks.show', 1));
 
         $response->assertOk();
         $response->assertJsonStructure([
@@ -93,7 +93,7 @@ class TaskTest extends TestCase
             'client_id',
             'project_id',
             'deadline',
-            'status'
+            'status',
         ]);
     }
 
@@ -109,11 +109,11 @@ class TaskTest extends TestCase
             'status' => Status::OPEN->name,
         ];
 
-        $response = $this->putJson(route('tasks.update',1),$userData);
+        $response = $this->putJson(route('tasks.update', 1), $userData);
 
         $response->assertOk();
         $response->assertExactJson(['message' => 'Task successfully updated!']);
-        $this->assertDatabaseHas('tasks',$userData);
+        $this->assertDatabaseHas('tasks', $userData);
     }
 
     public function testUpdateMethodFailsWithInCorrectData()
@@ -128,24 +128,24 @@ class TaskTest extends TestCase
             'status' => Status::OPEN->name,
         ];
 
-        $this->putJson(route('tasks.update',1),$userData);
+        $this->putJson(route('tasks.update', 1), $userData);
 
-        $this->assertDatabaseMissing('tasks',$userData);
+        $this->assertDatabaseMissing('tasks', $userData);
     }
 
     public function testDestroyMethodDeleteExistingRecord()
     {
-        $response = $this->deleteJson(route('tasks.destroy',1));
+        $response = $this->deleteJson(route('tasks.destroy', 1));
 
         $response->assertNoContent();
-        $this->assertDatabaseCount('tasks',9);
+        $this->assertDatabaseCount('tasks', 9);
     }
 
     public function testDestroyMethodFailsBecauseOfRecordNotFound()
     {
-        $response = $this->deleteJson(route('tasks.destroy',100));
+        $response = $this->deleteJson(route('tasks.destroy', 100));
 
         $response->assertNotFound();
-        $this->assertDatabaseCount('tasks',10);
+        $this->assertDatabaseCount('tasks', 10);
     }
 }
