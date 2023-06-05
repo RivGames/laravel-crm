@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Enums\Status;
 use App\Models\Client;
 use App\Models\Project;
+use App\Models\Role;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -22,7 +23,7 @@ class TaskTest extends TestCase
         Client::factory(10)->create();
         Project::factory(10)->create();
         Task::factory(10)->create();
-        $user = User::factory()->make();
+        $user = User::factory()->make(['role_id' => Role::MANAGER]);
         $this->actingAs($user);
     }
 
@@ -147,5 +148,13 @@ class TaskTest extends TestCase
 
         $response->assertNotFound();
         $this->assertDatabaseCount('tasks', 10);
+    }
+    public function testSimpleUserCannotGetAccessToIndexPage()
+    {
+        $user = User::factory()->create(['role_id' => Role::USER]);
+
+        $response = $this->actingAs($user)->getJson(route('tasks.index'));
+
+        $response->assertNotFound();
     }
 }
