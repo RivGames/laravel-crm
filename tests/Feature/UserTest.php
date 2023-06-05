@@ -124,6 +124,7 @@ class UserTest extends TestCase
         $response->assertExactJson(['message' => 'Unable to locate the User you requested.']);
         $this->assertDatabaseCount('users', 10);
     }
+
     public function testSimpleUserCannotGetAccessToIndexPageAndOthersPagesToo()
     {
         $user = User::factory()->create(['role_id' => Role::USER]);

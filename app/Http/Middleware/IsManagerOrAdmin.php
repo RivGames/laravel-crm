@@ -19,6 +19,7 @@ class IsManagerOrAdmin
         if (auth()->user()->role_id == Role::MANAGER || auth()->user()->role_id == Role::ADMIN) {
             return $next($request);
         }
-        return response()->json([],404);
+
+        return response()->json([], 404);
     }
 }

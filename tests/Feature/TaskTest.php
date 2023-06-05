@@ -149,6 +149,7 @@ class TaskTest extends TestCase
         $response->assertNotFound();
         $this->assertDatabaseCount('tasks', 10);
     }
+
     public function testSimpleUserCannotGetAccessToIndexPage()
     {
         $user = User::factory()->create(['role_id' => Role::USER]);

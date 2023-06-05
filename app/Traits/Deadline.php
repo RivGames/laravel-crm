@@ -10,7 +10,7 @@ trait Deadline
     public function deadline(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => Carbon::make($value)->format('m/d/Y')
+            get: fn ($value) => Carbon::make($value)->format('m/d/Y')
         );
     }
 }

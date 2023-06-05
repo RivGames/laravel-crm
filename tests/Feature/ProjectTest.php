@@ -163,11 +163,12 @@ class ProjectTest extends TestCase
         $response->assertNotFound();
         $this->assertDatabaseCount('projects', 10);
     }
+
     public function testSimpleUserCannotGetAccessToShowPage()
     {
         $user = User::factory()->create(['role_id' => Role::USER]);
 
-        $response = $this->actingAs($user)->getJson(route('projects.show',1));
+        $response = $this->actingAs($user)->getJson(route('projects.show', 1));
 
         $response->assertNotFound();
     }
