@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -26,8 +27,10 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        $this->reportable(function (ModelNotFoundException $exception) {
-
+        $this->renderable(function (AccessDeniedHttpException $e, $request) {
+            return new JsonResponse([
+                'message' => "You`re not eligible to this operation",
+            ], 404);
         });
     }
 
