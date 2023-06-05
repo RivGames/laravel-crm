@@ -27,7 +27,7 @@ class TaskFactory extends Factory
             'client_id' => rand(1, 10),
             'project_id' => rand(1, 10),
             'deadline' => fake()->date(),
-            'status' => ($statuses[array_rand($statuses)])->name,
+            'status' => ($statuses[array_rand($statuses)])->value,
         ];
     }
 }

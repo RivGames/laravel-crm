@@ -50,7 +50,7 @@ class ProjectTest extends TestCase
             'user_id' => rand(1, 10),
             'client_id' => rand(1, 10),
             'deadline' => fake()->date(),
-            'status' => ($statuses[array_rand($statuses)])->name,
+            'status' => ($statuses[array_rand($statuses)])->value,
         ];
 
         $response = $this->postJson(route('projects.store'), $userData);
@@ -120,7 +120,7 @@ class ProjectTest extends TestCase
             'user_id' => rand(1, 10),
             'client_id' => rand(1, 10),
             'deadline' => fake()->date(),
-            'status' => ($statuses[array_rand($statuses)])->name,
+            'status' => ($statuses[array_rand($statuses)])->value,
         ];
 
         $response = $this->putJson(route('projects.update', 1), $userData);

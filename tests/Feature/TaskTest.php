@@ -53,7 +53,7 @@ class TaskTest extends TestCase
             'client_id' => rand(1, 10),
             'project_id' => rand(1, 10),
             'deadline' => fake()->date(),
-            'status' => Status::OPEN->name,
+            'status' => Status::OPEN->value,
         ];
 
         $response = $this->postJson(route('tasks.store'), $userData);
@@ -106,7 +106,7 @@ class TaskTest extends TestCase
             'client_id' => rand(1, 10),
             'project_id' => rand(1, 10),
             'deadline' => fake()->date(),
-            'status' => Status::OPEN->name,
+            'status' => Status::OPEN->value,
         ];
 
         $response = $this->putJson(route('tasks.update', 1), $userData);
