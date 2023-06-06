@@ -30,7 +30,7 @@ class Handler extends ExceptionHandler
         $this->renderable(function (AccessDeniedHttpException $e, $request) {
             return new JsonResponse([
                 'message' => 'You`re not eligible to this operation',
-            ], 404);
+            ], 403);
         });
     }
 
