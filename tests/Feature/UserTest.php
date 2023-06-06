@@ -133,4 +133,29 @@ class UserTest extends TestCase
 
         $response->assertNotFound();
     }
+
+    public function testManagerCannotUpdateRecord()
+    {
+        $manager = User::factory()->create(['role_id' => Role::MANAGER]);
+
+        $userData = [
+            'name' => 'john doe',
+            'email' => 'johndoe@gmail.com',
+            'role_id' => 1,
+        ];
+
+        $response = $this->actingAs($manager)->putJson(route('users.update', 1), $userData);
+
+        $response->assertForbidden();
+        $this->assertDatabaseMissing('users', $userData);
+    }
+    public function testManagerCannotDeleteExistingRecord()
+    {
+        $manager = User::factory()->make(['role_id' => Role::MANAGER]);
+
+        $response = $this->actingAs($manager)->deleteJson(route('users.destroy', 1));
+
+        $response->assertForbidden();
+        $this->assertDatabaseCount('users',10);
+    }
 }
