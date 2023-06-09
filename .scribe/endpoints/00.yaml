@@ -1,0 +1,231 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/status
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: HealthCheck
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Everything is going to be OK","status":"OK"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/register
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 1|rVijT8wYDYz8bpfdFfwbH3GQbdrSk3J5liQm8W7I'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must be at least 5 characters. Must not be greater than 20 characters.'
+        required: true
+        example: qbkgecyd
+        type: string
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: true
+        example: beatae
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 8 characters. Must not be greater than 64 characters.'
+        required: true
+        example: 'oul"e''5%o'
+        type: string
+        custom: []
+    cleanBodyParameters:
+      name: qbkgecyd
+      email: beatae
+      password: 'oul"e''5%o'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|rVijT8wYDYz8bpfdFfwbH3GQbdrSk3J5liQm8W7I'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 1|rVijT8wYDYz8bpfdFfwbH3GQbdrSk3J5liQm8W7I'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: ''
+        required: true
+        example: autem
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: iusto
+        type: string
+        custom: []
+    cleanBodyParameters:
+      email: autem
+      password: iusto
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|rVijT8wYDYz8bpfdFfwbH3GQbdrSk3J5liQm8W7I'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/logout
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 1|rVijT8wYDYz8bpfdFfwbH3GQbdrSk3J5liQm8W7I'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|rVijT8wYDYz8bpfdFfwbH3GQbdrSk3J5liQm8W7I'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/mail
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 1|rVijT8wYDYz8bpfdFfwbH3GQbdrSk3J5liQm8W7I'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: ''
+        headers:
+          content-type: 'text/html; charset=UTF-8'
+          cache-control: 'no-cache, private'
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '51'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3|rVijT8wYDYz8bpfdFfwbH3GQbdrSk3J5liQm8W7I'
+    controller: null
+    method: null
+    route: null
+    custom: []
