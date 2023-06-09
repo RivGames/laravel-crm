@@ -12,10 +12,15 @@ use App\Services\ClientService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @group Client management
+ *
+ * APIs for managing clients
+ */
 class ClientController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the clients.
      */
     public function index(ClientService $clientService): ClientCollection
     {

@@ -11,10 +11,15 @@ use App\Models\Task;
 use App\Services\TaskService;
 use Illuminate\Http\JsonResponse;
 
+/**
+ * @group Task management
+ *
+ * APIs for managing tasks
+ */
 class TaskController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the tasks.
      */
     public function index(TaskService $taskService): TaskCollection
     {

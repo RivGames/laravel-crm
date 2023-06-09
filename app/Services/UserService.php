@@ -4,8 +4,10 @@ namespace App\Services;
 
 use App\Http\Resources\User\UserCollection;
 use App\Http\Resources\User\UserResource;
+use App\Mail\GreetingEmail;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UserService
 {
@@ -27,6 +29,8 @@ class UserService
             'password' => Hash::make($userData['password']),
             'role_id' => $userData['role_id'],
         ]);
+
+        Mail::to($userData['email'])->send(new GreetingEmail());
 
         return $user;
     }

@@ -12,10 +12,15 @@ use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @group User management
+ *
+ * APIs for managing users
+ */
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the users.
      */
     public function index(UserService $userService): UserCollection
     {
@@ -23,7 +28,9 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created user.
+     *
+     * @bodyParam name The name of user. Example: Alexandro
      */
     public function store(StoreRequest $request, UserService $userService): JsonResponse
     {
@@ -35,7 +42,9 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the user.
+     *
+     * @response status=404 scenario="User not found" {"message":"Unable to locate the user you requested."}
      */
     public function show(User $user, UserService $userService): UserResource
     {

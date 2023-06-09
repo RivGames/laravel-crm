@@ -12,10 +12,15 @@ use App\Services\ProjectService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @group Project management
+ *
+ * APIs for managing projects
+ */
 class ProjectController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the projects.
      */
     public function index(ProjectService $projectService): ProjectCollection
     {
